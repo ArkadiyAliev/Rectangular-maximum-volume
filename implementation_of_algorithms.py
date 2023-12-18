@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[13]:
-
 
 import numpy as np
 from scipy.linalg import get_lapack_funcs
@@ -17,8 +15,6 @@ from scipy.linalg import lu
 # volume differs from the maximum by no more than $r!$ times.
 # 
 # Programmed by Arkadiy Aliev
-
-# In[2]:
 
 
 def PreMaxvol(M_1, r):
@@ -45,8 +41,6 @@ def PreMaxvol(M_1, r):
 # **Output**: set of row indices $\mathcal{I}, \vert \mathcal{I}\vert = r$, which corresponds to a dominant submatrix $r\times r$.
 # 
 # Programmed by Roman Tarasov
-
-# In[48]:
 
 
 # A.shape = (N, r), where N > r
@@ -96,8 +90,6 @@ def maxvol(A, tol=1.05, max_iters=100, mode="standart"):
 # 
 # Programmed by Roman Tarasov
 
-# In[50]:
-
 
 def rect_maxvol(A, n, tol=1., start_maxvol_iters=10):
 
@@ -139,8 +131,6 @@ def rect_maxvol(A, n, tol=1., start_maxvol_iters=10):
 # 
 # Programmed by Vsevolod Ivanov
 
-# In[3]:
-
 
 def maxvol2(A, I, n):
 
@@ -178,8 +168,6 @@ def maxvol2(A, I, n):
 # 
 # Programmed by Arakdiy Aliev and Vsevolod Ivanov
 
-# In[4]:
-
 
 def householder(x):
     alpha = x[0]
@@ -195,9 +183,6 @@ def householder(x):
         tau = 2 * v[0]**2 / (s + v[0]**2)
         v /= v[0]
     return tau, v.reshape((v.shape[1], 1))
-
-
-# In[5]:
 
 
 def HouseholderMaxvol2(A, I, n):
@@ -232,8 +217,6 @@ def HouseholderMaxvol2(A, I, n):
 # Output: set of row indices $\mathcal{I}_{1}$, which corresponds to a dominant submatrix $n\times r$.
 # 
 # Programmed by Arakdiy Aliev and Vsevolod Ivanov
-
-# In[6]:
 
 
 def DominantC(A, I):
@@ -283,8 +266,6 @@ def DominantC(A, I):
 # 
 # Programmed by Arakdiy Aliev
 
-# In[67]:
-
 
 def LowRankApproximation(A, r):
     I = PreMaxvol(A.T, r)
@@ -309,5 +290,3 @@ def LowRankApproximation(A, r):
         changed = changed_I or changed_J
     
     return C @ R
-                
-
